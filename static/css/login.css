@@ -5,7 +5,7 @@
   padding-top:30px;
   padding-bottom:30px;
   border-radius: 3px; }
-#ip1:focus,#ip2:focus{
+input[type=text]:focus,input[type=password]:focus{
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   'padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;'
