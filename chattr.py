@@ -1,10 +1,15 @@
 from flask import Flask ,render_template
-from flask.ext.mysql import MySQL
+from connector import connect
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "database connected"
+    db=connect()
+    cursor = db.cursor()
+    cursor.execute("select username from user")
+    uname = cursor.fetchone()
+    return uname
 if __name__=='__main__':
     app.run()
+
