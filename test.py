@@ -3,7 +3,7 @@ from connector import connect
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/test")
 def hello():
     db=connect()
     cursor = db.cursor()
