@@ -35,7 +35,17 @@
     </ul>
   </div-->
 </div>
-
+<div class="flashes">
+{% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li>{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+</div>
 
 <div class="row">
   <div class="medium-6 medium-centered large-4 large-centered columns">
