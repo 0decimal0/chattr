@@ -3,6 +3,8 @@ from connector import connect
 import hashlib
 
 app=Flask(__name__)
+app.config.from_pyfile('config.py')
+app.secret_key = app.config['SECRET_KEY']
 
 @app.route("/login",methods=['POST','GET'])
 def login():
@@ -25,7 +27,7 @@ def home():
     number_of_rows = cursor.rowcount
 
     if number_of_rows != 1:
-        '''flash('Invalid email or password!')'''
+        flash('Invalid email or password!')
         return redirect(url_for('login'))
     else:
         return redirect(url_for('redirecthome'))
