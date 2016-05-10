@@ -1,3 +1,4 @@
+
 import mysql.connector
 from mysql.connector import Error
 
@@ -16,5 +17,5 @@ def connect():
     except Error as e:
         print(e)
     return conn
-'''if __name__=='__main__':
-    connect()'''
+if __name__=='__main__':
+    connect()
