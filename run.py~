@@ -1,9 +1,0 @@
-#!flask/bin/python
-from chattr.authorization import authorization
-from flask import Flask
-
-app = Flask(__name__)
-
-app.register_blueprint(authorization)
-app.run()
-

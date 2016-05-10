@@ -1,12 +1,9 @@
 from flask import Flask,Blueprint,render_template,request,session,g,url_for,redirect,flash,abort
 from connector import connect
 import hashlib
-import json
 
 app=Flask(__name__)
-'''with open('config.json','r') as f:
-            data = json.load(f)'''
-app.config.from_json('config.json')
+
 app.secret_key = app.config['SECRET_KEY']
 auth = Blueprint('authorization',__name__)
 

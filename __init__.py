@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Configurations
 app.config.from_json('config.json')
-'''p.config.from_pyfile('config.py')'''
+
 
 #Sample HTTP error handling
 #@app.errorhandler(404)
