@@ -55,12 +55,11 @@ input[type=text]:focus,input[type=password]:focus{
 .js-drilldown-back::before {
   border-color: transparent #fff transparent transparent; }
 
-/*alert box styling */
-.alert-box {
+*.alert-box {
   position: absolute;
   background-repeat: no-repeat;
   background-size: auto;
-  background-color: #f22613;
+  background-color: #ff99ff;
   border: 0;
   text-align: center;
   padding-left: 2rem; }
@@ -68,7 +67,8 @@ input[type=text]:focus,input[type=password]:focus{
     background: none; }
   .alert-box.info.radius {
     margin:5%;
-    background-color: #f22613;
+    background-color: #ff99ff;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAARVBMVEX////7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0P7y0NAQECdhUHYsUKGdEG1l0JLSEBuYkHkukPKU8NPAAAADnRSTlMA4EDAoCAQ8IBgkDDQUFItelQAAAC0SURBVHherZBLDsMwCAVD7Nj5gvPr/Y/a0FpGLTibdnbozQJN829agPZu7/CiuxE8C76+T/hiqgruLbjqh5ip/TljZrb3AQuDKYAIYO09L3TBRq/3EHk4shCDEkZkTqITmdGMLIIO7r8FbzfaiDappSNjIkpZcCqyCDo4WAJYkR8prTp4ADSBUCIX9uPY5epL5AJdyBWDRDYFHCWyCiXBObKwrh+nl4g2TiLVhSXW97g0v/MEHIQbCYeFmYAAAAAASUVORK5CYII=);
     color: #333; }
+*/
 

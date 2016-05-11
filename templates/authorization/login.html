@@ -4,10 +4,11 @@
             {% if messages %}
                  {% for message in messages %}
                  <div class="row">
-                   <div class="small-6 small-centered columns">
-                     <div data-alert class="alert-box info radius">
+                   <div class="small-6 columns small-centered">
+                     <div data-alert class="alert-box alert">
+                       <i class="fi-x"></i>
                        {{ message }}
-                       <a href="#" class="close">&times;</a>
+                       <a href="#" class="close">&CircleTimes;</a>
                      </div>
                    </div>
                  </div>
