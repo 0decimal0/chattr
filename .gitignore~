@@ -1,3 +1,6 @@
 *.json
 *.json~
-config.py
+*.pyc
+*.pyc~
+*.txt~
+

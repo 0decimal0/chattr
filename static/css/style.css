@@ -330,8 +330,8 @@ xsigin/signup popup
   appearance: none;
 }
 .cd-form input.has-border:focus {
-  border-color: #343642;
-  box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+  border: 1px solid rgba(81, 203, 238, 1);/*blue glowing input highlights when in focus*/
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   outline: none;
 }
 .cd-form input.has-error {
