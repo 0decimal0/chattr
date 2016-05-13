@@ -15,7 +15,7 @@ def login():
 def home():
     error = None
     if request.method =='POST':
-        uname = request.form['username']
+        uname = request.form['email']
         upass = request.form['password']
     passwd = hashlib.sha1(upass).hexdigest()
     
