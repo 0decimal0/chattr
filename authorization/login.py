@@ -26,12 +26,33 @@ def home():
     
     '''the rowcount attribute works only after the row has been fetched that is after fetchone() method '''
     number_of_rows = cursor.rowcount
+    db.close()
 
     if number_of_rows != 1:
         flash('Invalid email or password!')
         return redirect(url_for('authorization.login'))
     else:
         return redirect(url_for('authorization.redirecthome'))
+
+@auth.route("/registered",methods=['POST','GET'])
+def registered():
+    if request.method == 'POST':
+        uname = request.form['username']
+        email = request.form['email']
+        upass = request.form['password']
+    db = connect()
+    cursor = db.cursor()
+    cursor.execute("select count(*) from user")
+    sum_rows = cursor.fetchone()
+    uid = sum_rows[0]+1
+    cursor.execute("""insert into user(userId,username,password,email) values('%d','%s',sha1('%s'),'%s')""" % (uid,uname,upass,email))
+    db.commit()
+    result = cursor.fetchone()
+    rows = cursor.rowcount
+    if rows == 1:
+        return redirect(url_for('authorization.redirecthome'))
+    else:
+        return redirect(url_for('authorization.login'))
 
 @auth.route("/redirecthome",methods=['POST','GET'])
 def redirecthome():
