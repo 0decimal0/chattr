@@ -1,10 +1,16 @@
 from flask import Flask,Blueprint,render_template,request,session,g,url_for,redirect,flash,abort
 from connector import connect
-import hashlib
+import hashlib,json,random,string
+import smtplib
 
 app=Flask(__name__)
 
 app.secret_key = app.config['SECRET_KEY']
+with open('config.json','r') as f:
+    data = json.load(f)
+host = data['SMTP_HOST']
+user = data['SMTP_USER']
+upass = data['SMTP_PASS']
 auth = Blueprint('authorization',__name__)
 
 @auth.route("/login",methods=['POST','GET'])
@@ -49,11 +55,33 @@ def registered():
     db.commit()
     result = cursor.fetchone()
     rows = cursor.rowcount
+    db.close()
     if rows == 1:
         return redirect(url_for('authorization.redirecthome'))
     else:
         return redirect(url_for('authorization.login'))
 
+@auth.route("/resetpass",methods=['POST','GET'])
+def resetpass():
+    randomstring = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for _ in range(8))
+    if request.method == 'POST':
+        receiver = request.form['receiver']
+    db = connect()
+    cursor = db.cursor()
+    cursor.execute("""update user set password=sha1('%s') where email='%s'""" % (randomstring,receiver))
+    db.commit()
+    db.close()
+    try:
+        server = smtplib.SMTP(host,25)
+        server.ehlo()
+        server.starttls()
+        server.login(user,upass)
+        server.sendmail(user,receiver,randomstring)
+        server.close()
+        return render_template("authorization/resetpass.html",tuples=receiver)
+    except:
+        flash("The reset password didn't go through.Please check!, the email is correct!")
+        return redirect(url_for('authorization.redirecthome'))
 @auth.route("/redirecthome",methods=['POST','GET'])
 def redirecthome():
     return render_template("authorization/home.html")
