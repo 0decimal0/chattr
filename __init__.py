@@ -1,6 +1,6 @@
 # Import flask and template operators
 from flask import Flask, render_template,config
-from authorization.login import auth 
+from views.login import auth 
 # Define the WSGI application object
 app = Flask(__name__)
 

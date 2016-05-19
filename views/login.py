@@ -13,6 +13,9 @@ user = data['SMTP_USER']
 upass = data['SMTP_PASS']
 auth = Blueprint('authorization',__name__)
 
+@auth.route("/")
+def homepage():
+    return render_template("authorization/home.html")
 @auth.route("/login",methods=['POST','GET'])
 def login():
     return render_template("authorization/login.html")
